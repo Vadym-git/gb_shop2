@@ -1,0 +1,23 @@
+{% load socialaccount %}
+<html>
+  <head>
+    <title>Google Registration</title>
+  </head>
+  <body>
+  <div style="margin: 0 auto;text-align: center;">
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }} !</p>
+
+    {% else %}
+    <h1>Social media Login</h1>
+    <div>
+      <a href="{% provider_login_url 'google' %}">Login with Google</a>
+    </div>
+    <br>
+    <div>
+      <a href="{% provider_login_url 'facebook' method='oauth2' %}">Login with Facebook</a>
+    </div>
+    {% endif %}
+    </div>
+  </body>
+</html>
