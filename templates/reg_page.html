@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block data %}
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Your cart</h4>
+			<div class="site-pagination">
+				<a href="">Home</a> /
+				<a href="">Your cart</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+{% if request.method == "GET" %}
+	<!-- section  -->
+	<section class="checkout-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-2 order-lg-1">
+					<form class="checkout-form" method="post">
+						<div class="cf-title">Please register here</div>
+						<div class="row address-inputs">
+							<div class="col-md-12">
+								<input type="email" name="{{ form.from_email.name }}" placeholder="{{ form.from_email.label }}">
+								<input type="password" name="{{ form.password.name }}" placeholder="{{ form.password.label }}">
+								<input type="password" name="{{ form.re_password.name }}" placeholder="{{ form.re_password.label }}">
+								{% csrf_token %}
+							</div>
+						</div>
+						<button type="submit" class="site-btn submit-order-btn">Registration</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- section end -->
+{% else %}
+<h1>{{ message }}</h1>
+{% endif %}
+{% endblock data %}
